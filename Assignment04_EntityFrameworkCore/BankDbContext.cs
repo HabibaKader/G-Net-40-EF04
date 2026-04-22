@@ -32,6 +32,32 @@ namespace Assignment04_EntityFrameworkCore
             ConfigureAccountRelations(modelBuilder);
             ConfigureAccountCustomer(modelBuilder);
             ConfigureTransactions(modelBuilder);
+
+
+            // Seed data for testing
+            modelBuilder.Entity<Manager>().HasData(
+                new Manager { Id = 1, FullName = "Ahmed Ali", Email = "ahmed@bank.com", PhoneNumber = "01000000000", HireDate = DateTime.Now }
+            );
+
+            modelBuilder.Entity<Branch>().HasData(
+                new Branch { Id = 1, Name = "Cairo Branch", Code = "BR001", Address = "Cairo", PhoneNumber = "02222222", ManagerId = 1 }
+            );
+
+            modelBuilder.Entity<Customer>().HasData(
+                new Customer { Id = 1, FullName = "Sara Mohamed", Email = "sara@mail.com", PhoneNumber = "01111111111", NationalId = "123", Address = "Cairo", CustomerType = "Individual", DateOfBirth = new DateTime(1998, 1, 1) }
+            );
+
+            modelBuilder.Entity<Account>().HasData(
+                new Account { Id = 1, AccountNumber = "ACC001", AccountType = "Savings", OpeningDate = DateTime.Now, CurrentBalance = 1000, BranchId = 1 }
+            );
+
+            modelBuilder.Entity<AccountCustomer>().HasData(
+                new { AccountId = 1, CustomerId = 1, OwnershipStartDate = DateTime.Now, OwnershipType = "Primary", AccountStatus = "Active" }
+            );
+
+            modelBuilder.Entity<Transaction>().HasData(
+                new Transaction { Id = 1, TransactionNumber = "TXN001", Amount = 500, TransactionType = "Deposit", TransactionDate = DateTime.Now, AccountId = 1, Note = "Initial deposit" }
+            );
         }
         private void ConfigureBranchManager(ModelBuilder modelBuilder)
         {
