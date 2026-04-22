@@ -66,7 +66,7 @@ namespace Assignment04_EntityFrameworkCore
             modelBuilder.Entity<Manager>().HasData(
                 new Manager
                 {
-                    Id = 1,
+                    Id = 2,
                     FullName = "Ahmed Hassan",
                     Email = "ahmed@bank.com",
                     PhoneNumber = "01000000001",
@@ -74,7 +74,7 @@ namespace Assignment04_EntityFrameworkCore
                 },
                 new Manager
                 {
-                    Id = 2,
+                    Id = 3,
                     FullName = "Mona Ali",
                     Email = "mona@bank.com",
                     PhoneNumber = "01000000002",
@@ -85,7 +85,7 @@ namespace Assignment04_EntityFrameworkCore
             modelBuilder.Entity<Branch>().HasData(
                 new Branch
                 {
-                    Id = 1,
+                    Id = 2,
                     Name = "Cairo Branch",
                     Code = "BR001",
                     Address = "Cairo",
@@ -94,7 +94,7 @@ namespace Assignment04_EntityFrameworkCore
                 },
                 new Branch
                 {
-                    Id = 2,
+                    Id = 3,
                     Name = "Alex Branch",
                     Code = "BR002",
                     Address = "Alexandria",
