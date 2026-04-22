@@ -33,6 +33,7 @@ namespace Assignment04_EntityFrameworkCore
             ConfigureAccountCustomer(modelBuilder);
             ConfigureTransactions(modelBuilder);
 
+            SeedManagersAndBranches(modelBuilder);
 
             // Seed data for testing
             modelBuilder.Entity<Manager>().HasData(
@@ -59,6 +60,50 @@ namespace Assignment04_EntityFrameworkCore
                 new Transaction { Id = 1, TransactionNumber = "TXN001", Amount = 500, TransactionType = "Deposit", TransactionDate = DateTime.Now, AccountId = 1, Note = "Initial deposit" }
             );
         }
+
+        private void SeedManagersAndBranches(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Manager>().HasData(
+                new Manager
+                {
+                    Id = 1,
+                    FullName = "Ahmed Hassan",
+                    Email = "ahmed@bank.com",
+                    PhoneNumber = "01000000001",
+                    HireDate = new DateTime(2020, 5, 1)
+                },
+                new Manager
+                {
+                    Id = 2,
+                    FullName = "Mona Ali",
+                    Email = "mona@bank.com",
+                    PhoneNumber = "01000000002",
+                    HireDate = new DateTime(2021, 3, 15)
+                }
+            );
+
+            modelBuilder.Entity<Branch>().HasData(
+                new Branch
+                {
+                    Id = 1,
+                    Name = "Cairo Branch",
+                    Code = "BR001",
+                    Address = "Cairo",
+                    PhoneNumber = "02222222",
+                    ManagerId = 1
+                },
+                new Branch
+                {
+                    Id = 2,
+                    Name = "Alex Branch",
+                    Code = "BR002",
+                    Address = "Alexandria",
+                    PhoneNumber = "03333333",
+                    ManagerId = 2
+                }
+            );
+        }
+
         private void ConfigureBranchManager(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Branch>()
