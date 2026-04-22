@@ -17,6 +17,15 @@ namespace Assignment04_EntityFrameworkCore
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<AccountCustomer> AccountCustomers { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(
+                    "Server=.;Database=BankDb;Trusted_Connection=True;TrustServerCertificate=True;");
+            }
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             ConfigureBranchManager(modelBuilder);
